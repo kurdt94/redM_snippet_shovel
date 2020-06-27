@@ -20,9 +20,9 @@ function StartAnimation(animDict,flags,playbackListName,p3,p4,groundZ,time)
 	    
 	    -- DIG UP A CHEST
 	    --local chest = CreateObjectNoOffset(GetHashKey('p_strongbox_muddy_01x'), pCoord, true, true, false, true)
-		--Citizen.InvokeNative(0x8B720AD451CA2AB3, animScene, "CHEST", chest, 0)
+	    --Citizen.InvokeNative(0x8B720AD451CA2AB3, animScene, "CHEST", chest, 0)
 
-			-- LOAD_ANIM_SCENE
+	    -- LOAD_ANIM_SCENE
 	    Citizen.InvokeNative(0xAF068580194D9DC7, animScene) 
 	    Citizen.Wait(1000)
 	    -- START_ANIM_SCENE
@@ -31,8 +31,12 @@ function StartAnimation(animDict,flags,playbackListName,p3,p4,groundZ,time)
 	    if time then
 	    	Citizen.Wait(tonumber(time))	
 	    else
-	   		Citizen.Wait(10000) 
+	   	Citizen.Wait(10000) 
 	    end
+			
+	    -- SET CHEST AS OPENED AFTER DUG UP
+	    -- Citizen.InvokeNative(0x188F8071F244B9B8, chest, 1) -- found native sets CHEST as OPENED
+			
 	    -- _DELETE_ANIM_SCENE
 	    Citizen.InvokeNative(0x84EEDB2C6E650000, animScene) 
    end) 
